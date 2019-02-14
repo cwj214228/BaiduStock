@@ -11,6 +11,7 @@ class MysqlPipeline(object):
     """
     同步操作
     """
+
     def __init__(self):
         # 建立连接
         #数据库的地址，账号，密码，数据库的名字
