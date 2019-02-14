@@ -65,7 +65,7 @@ CONCURRENT_REQUESTS_PER_IP = 16
 # Configure item pipelines
 # See https://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'BaiduStocks.pipelines.MysqlPipelineTwo': 300,
+   'BaiduStocks.pipelines.MysqlPipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
