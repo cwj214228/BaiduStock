@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 
 
 class StocksSpider(scrapy.Spider):
-    name = "stocks"
+    name = "5173"
     start_urls = ['http://s.5173.com/dnf-0-f10pkw-qrekgd-0-bx1xiv-0-0-0-a-a-a-a-a-0-itemprice_asc-0-0.shtml']
 
 
