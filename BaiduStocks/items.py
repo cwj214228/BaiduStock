@@ -11,4 +11,8 @@ import scrapy
 class BaidustocksItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
+    goods_list = scrapy.Field()
+    price_list = scrapy.Field()
+    num_list = scrapy.Field()
+    UnitPrice_list = scrapy.Field()
     pass

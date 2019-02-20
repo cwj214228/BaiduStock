@@ -23,7 +23,7 @@ class MysqlPipeline(object):
         # sql语句
         # 执行插入数据到数据库操作
         self.cursor.execute("insert into ssss(type,price,num,danjia) values (%s,%s,%s,%s)",
-                            (item['类型'], item['价格'], item['数量'], item['单价']))
+                            (item['goods_list'], item['price_list'], item['num_list'], item['UnitPrice_list']))
         # 提交，不进行提交无法保存到数据库
         self.conn.commit()
 
