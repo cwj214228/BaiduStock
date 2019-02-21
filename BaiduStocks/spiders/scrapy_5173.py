@@ -14,21 +14,18 @@ class StocksSpider(scrapy.Spider):
         #首先定义了需要解析网页获取的数据的队列，分别是：商品、价钱、数量和单价。
         goods_list=[]
         price_list=[]
-        num_list=[]
         UnitPrice_list=[]
 
         #使用了xpath语法，根据标签快速定位想要获取的内容，速度比BeautifulSoup要快
         goods_list=response.xpath('.//div[@class="sin_pdlbox"]/ul[1]/li[1]/h2/a/text()').extract()
         price_list=response.xpath('.//div[@class="sin_pdlbox"]/ul[2]/li[1]/strong/text()').extract()
-        num_list=response.xpath('.//div[@class="sin_pdlbox"]/ul[3]/li/text()').extract()
         UnitPrice_list=response.xpath('.//div[@class="sin_pdlbox"]/ul[4]/li[1]/b/text()').extract()
 
         data=BaidustocksItem()
 
-        for i,j,k,l in zip(goods_list,price_list,num_list,UnitPrice_list):
+        for i,j,l in zip(goods_list,price_list,UnitPrice_list):
             data['goods_list']=i
             data['price_list']=j
-            data['num_list']=k
             data['UnitPrice_list']=l
             yield data
 

@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 import pymysql
+import xlsxwriter
+import time
 from twisted.enterprise import adbapi
 # Define your item pipelines here
 #
@@ -8,11 +10,28 @@ from twisted.enterprise import adbapi
 
 
 class MysqlPipeline(object):
+    def open_spider(self, spider):
+        self.workbook = xlsxwriter.Workbook('d:/'+time.strftime("%Y-%m-%d")+'.xlsx')  # 创建一个Excel文件
+        self.worksheet = self.workbook.add_worksheet()  # 创建一个sheet
+        self.num0=0
+
+    def process_item(self, item, spider):
+        self.num0 = self.num0 + 1
+        row = 'A' + str(self.num0)
+        data = [item['goods_list'], item['price_list'], item['UnitPrice_list'], time.strftime("%Y-%m-%d")]
+        self.worksheet.write_row(row, data)
+        return item
+
+    def close_spider(self, spider):
+        self.workbook.close()
+
+
+
     """
     同步操作
     """
-
-    def __init__(self):
+    '''
+    def open_spider(self,spider):
         # 建立连接
         #数据库的地址，账号，密码，数据库的名字
         self.conn = pymysql.connect('localhost', 'root', '5201314', 'leecx',charset='utf8')  # 有中文要存入数据库的话要加charset='utf8'
@@ -31,5 +50,5 @@ class MysqlPipeline(object):
         # 关闭游标和连接
         self.cursor.close()
         self.conn.close()
-
+'''
 
